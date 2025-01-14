@@ -1,0 +1,8 @@
+import { Controller, Get } from '@nestjs/common';
+
+@Controller('alumnos')
+export class AlumnosController {
+    @Get()
+        find(){
+        return "Hola Alumnos"  }
+}
