@@ -1,44 +1,37 @@
-import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, ParseFloatPipe, ParseIntPipe, Patch, Post, Put, Query } from '@nestjs/common';
+import { ProductsService } from './products.service';
+import { Products } from './products.interfaces';
+import { ProductsDto } from './products.dto/productos.dto';
 
-interface datos {id?:string,size?:string};
-type Product={articulo:string,precio:number,descripcion:string};
 @Controller('products')
 export class ProductsController {
-    @Get()
-    findProducts():string{
-        return "Total de productos en el aula 2ASIR"
+   constructor(private readonly servicioProducts: ProductsService){}
+   @Get()
+   getAllProducts():Products[] {
+       return this.servicioProducts.getAll();
+   }
+   @Get('total')
+   getTotal(){
+       return `El array tiene : ${this.servicioProducts.total()} elementos`;
+   }
+   @Get(':id')
+    getId(@Param('id',ParseIntPipe)  id: number): Products {
+        return this.servicioProducts.findOne(id);
     }
-    @Get('camiseta')
-    findDetalle():string{
-        return "Total de camisetas!!"; 
-    }
-    @Get('camiseta/roja')
-    findAdios():string{
-        return "Total de camisetas rojas!!"; 
-    }   
-    @Get(':id?/:size?')
-  findWithOptional(@Param() params: datos) {
-    const { id,size } = params;
-    if (size && id) {
-      return `Item ${id} de tamaño ${size}`;
-    } else if (id) {
-      return `Todos los items de tipo ${id}`;
-    } else {
-      return 'Todos los items';
-    }
-}
-    @Post()
-    insertaProducts(@Body() producto:Product){
-        return `El producto ${producto.articulo} de precio ${producto.precio} se ha insertado correctamente`;
-    }
-    @Put()
-    actualizaProducts():string{
-        return "Producto ACTUALIZADO"
-    }
-
-    @Delete()
-    borraProducts():string{
-        return "Producto Borrado"
-    }
-
+@Post()
+createProduct(@Body() producto:ProductsDto):{status:HttpStatus,msg:string} {
+       return this.servicioProducts.insert({
+           id: this.servicioProducts.getAll().length+1,
+           articulo:producto.articulo, //Este es el fallo del viernes que no creaba el formato json con DTO
+           precio: producto.precio
+           });
+   }
+  @Put(':id')
+  updateProduct(@Param('id') valor:number, @Body() producto:any){
+    return this.servicioProducts.update(valor,producto);
+  }
+  @Delete(':id')
+  deleteProduct(@Param('id') valor:number):string{
+    return this.servicioProducts.delete(valor);
+  }
 }
