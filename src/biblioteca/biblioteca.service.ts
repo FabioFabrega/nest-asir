@@ -1,6 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import { CreateBibliotecaDto } from './dto/create-biblioteca.dto';
 import { UpdateBibliotecaDto } from './dto/update-biblioteca.dto';
+import { Biblioteca } from './entities/biblioteca.entity';
+import { Repository } from 'typeorm';
+import { InjectRepository } from '@nestjs/typeorm';
 
 @Injectable()
 export class BibliotecaService {
@@ -8,19 +11,20 @@ export class BibliotecaService {
     return 'This action adds a new biblioteca';
   }
 
-  findAll() {
-    return `This action returns all biblioteca`;
+  async findAll():Promise<Biblioteca[]> {
+    return this.BibliotecaRepository.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} biblioteca`;
+ async findOne(id: number) {
+    return this.BibliotecaRepository.findOne(where=id);
   }
 
   update(id: number, updateBibliotecaDto: UpdateBibliotecaDto) {
     return `This action updates a #${id} biblioteca`;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} biblioteca`;
+  async remove(id: number):Promise<string> {
+    await this.bibliotecaRepository.remove(id);
+    return "Elemento de la base de datos eliminado";
   }
 }
