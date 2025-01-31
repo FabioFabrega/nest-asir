@@ -3,6 +3,7 @@ import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UsuarioModule } from './usuario/usuario.module';
 import { BibliotecaModule } from './biblioteca/biblioteca.module';
+import { PokemonModule } from './pokemon/pokemon.module';
 
 @Module({
   imports: [ConfigModule.forRoot({isGlobal:true,}), 
@@ -29,7 +30,8 @@ import { BibliotecaModule } from './biblioteca/biblioteca.module';
       synchronize:true
     }),
     UsuarioModule,
-    BibliotecaModule
+    BibliotecaModule,
+    PokemonModule
   ],
   controllers: [],
   providers: [],

@@ -1,18 +1,23 @@
+
 import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn } from 'typeorm';
 @Entity()
-export class Biblioteca {
+export class Pokemon {
   @PrimaryGeneratedColumn() // Genera un id autoincremental, si sólo fuera clave sería @PrimaryColumn()
   id: number;
   @Column({ type: 'varchar', length: 50 })
-    titulo: string;
+    Nombre: string;
+  @Column({ type: 'varchar', length: 50 })
+    Tipo: string;
   @Column()
-    autor: string;
+    Hp: number;
   @Column()
-    tema: string;
+    Ataque: number;
   @Column()
-    editorial: string;
+    Defensa: number;
   @Column()
-    stock: number;
+    Ataque_esp: number;
   @Column()
-    precio: number;
+    Defensa_esp: number;
+  @Column()
+    Velocidad: number;
 }
