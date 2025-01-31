@@ -6,7 +6,7 @@ export class Pokemon {
   id: number;
   @Column({ type: 'varchar', length: 50 })
     Nombre: string;
-  @Column()
+  @Column({ type: 'varchar', length: 50 })
     Tipo: string;
   @Column()
     Hp: number;
