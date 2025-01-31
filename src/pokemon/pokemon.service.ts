@@ -16,12 +16,27 @@ export class PokemonService {
       return this.PokemonRepository.save(Poke)
     }
 
-  findAll() {
-    return `This action returns all pokemon`;
-  }
 
   findOne(id: number) {
     return `This action returns a #${id} pokemon`;
+  }
+  async findAll(Nombre?:string, ordenm?: string, tipo?: string): Promise<Pokemon[]>{
+    let query = this.PokemonRepository.createQueryBuilder('pokemon')
+    if (Nombre) {
+      query = query.where('LOWER(pokemon.Nombre) LIKE LOWER(:nombre)', { nombre: `%${Nombre}%` });
+    }
+
+    // Filtrar por tipo
+    if (tipo) {
+      query = query.where('LOWER(pokemon.tipo) = LOWER(:tipo)', { tipo });
+    }
+
+    // Ordenar por HP (de mayor a menor)
+    if (ordenm === 'hp') {
+      query = query.orderBy('pokemon.Hp', 'DESC');
+    }
+
+    return query.getMany();
   }
 
   update(id: number, updatePokemonDto: UpdatePokemonDto) {
