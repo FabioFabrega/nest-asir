@@ -20,7 +20,7 @@ export class PokemonService {
   findOne(id: number) {
     return `This action returns a #${id} pokemon`;
   }
-  async findAll(Nombre?:string, ordenm?: string, tipo?: string): Promise<Pokemon[]>{
+  async findAll(Nombre?:string, hp?: number, tipo?: string): Promise<Pokemon[]>{
     let query = this.PokemonRepository.createQueryBuilder('pokemon')
     if (Nombre) {
       query = query.where('LOWER(pokemon.Nombre) LIKE LOWER(:nombre)', { nombre: `%${Nombre}%` });
@@ -32,7 +32,7 @@ export class PokemonService {
     }
 
     // Ordenar por HP (de mayor a menor)
-    if (ordenm === 'hp') {
+    if (hp) {
       query = query.orderBy('pokemon.Hp', 'DESC');
     }
 

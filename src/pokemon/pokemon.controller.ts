@@ -16,10 +16,10 @@ export class PokemonController {
   @Get()
   async findAll(
     @Query('nombre') nombre?: string,
-    @Query('ordenm') ordenm?: string,
+    @Query('hp') hp?: number,
     @Query('tipo') tipo?: string
   ): Promise<Pokemon[]> {
-    return this.pokemonService.findAll(nombre, ordenm, tipo);
+    return this.pokemonService.findAll(nombre, hp, tipo);
   }
 
   @Get(':id')
