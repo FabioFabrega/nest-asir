@@ -31,7 +31,6 @@ export class PokemonService {
     if (hp) {
       query = query.orderBy('pokemon.Hp', 'DESC');
     }
-
     return query.getMany();
   }
 
