@@ -25,13 +25,9 @@ export class PokemonService {
     if (Nombre) {
       query = query.where('LOWER(pokemon.Nombre) LIKE LOWER(:nombre)', { nombre: `%${Nombre}%` });
     }
-
-    // Filtrar por tipo
     if (tipo) {
       query = query.where('LOWER(pokemon.tipo) = LOWER(:tipo)', { tipo });
     }
-
-    // Ordenar por HP (de mayor a menor)
     if (hp) {
       query = query.orderBy('pokemon.Hp', 'DESC');
     }

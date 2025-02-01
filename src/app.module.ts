@@ -4,6 +4,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { UsuarioModule } from './usuario/usuario.module';
 import { BibliotecaModule } from './biblioteca/biblioteca.module';
 import { PokemonModule } from './pokemon/pokemon.module';
+import { PeliculasModule } from './peliculas/peliculas.module';
 
 @Module({
   imports: [ConfigModule.forRoot({isGlobal:true,}), 
@@ -31,7 +32,8 @@ import { PokemonModule } from './pokemon/pokemon.module';
     }),
     UsuarioModule,
     BibliotecaModule,
-    PokemonModule
+    PokemonModule,
+    PeliculasModule
   ],
   controllers: [],
   providers: [],
