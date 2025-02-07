@@ -5,6 +5,7 @@ import { UsuarioModule } from './usuario/usuario.module';
 import { BibliotecaModule } from './biblioteca/biblioteca.module';
 import { PokemonModule } from './pokemon/pokemon.module';
 import { PeliculasModule } from './peliculas/peliculas.module';
+import { ProductsModule } from './products/products.module';
 
 @Module({
   imports: [ConfigModule.forRoot({isGlobal:true,}), 
@@ -33,7 +34,8 @@ import { PeliculasModule } from './peliculas/peliculas.module';
     UsuarioModule,
     BibliotecaModule,
     PokemonModule,
-    PeliculasModule
+    PeliculasModule,
+    ProductsModule
   ],
   controllers: [],
   providers: [],
