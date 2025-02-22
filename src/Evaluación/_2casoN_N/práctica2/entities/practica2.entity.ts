@@ -15,10 +15,4 @@ export class practica2 {
   @Column()
   fecha: Date
 
-
-  @OneToMany(
-    () => profesor,
-    (profesor) => profesor.practica2,
-  )
-  profesor: profesor[]
 }

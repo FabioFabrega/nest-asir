@@ -1,23 +1,18 @@
+
+import { profesor } from "src/Evaluación/_2casoN_N/profesor_diseña_práctica/entities/profesor.entity"
 import { Column, Entity, ManyToOne, JoinColumn, PrimaryGeneratedColumn } from "typeorm"
-import { practica2 } from "../../práctica2/entities/practica2.entity"
 
 @Entity()
-export class profesor {
+export class examen2 {
   @PrimaryGeneratedColumn()
   id: number
 
   @Column()
-  nif: number
+  título: string
 
   @Column()
-  nombre: string
+  número_preguntas: number
 
-  @Column()
-  apellido1: string
-
-  @Column()
-  apellido2: string
-  
   @Column()
   fecha: string
   
@@ -25,7 +20,4 @@ export class profesor {
   @JoinColumn({ name: 'id_profesor' })
   profesor: profesor;
 
-  @ManyToOne(() => practica2)
-  @JoinColumn({ name: 'id_practica' })
-  practica: practica2;
 }

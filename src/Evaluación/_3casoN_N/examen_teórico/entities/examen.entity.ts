@@ -17,7 +17,4 @@ export class examen {
 
   @Column()
   nota: number
-
-  @ManyToMany(() => alumno2)
-  alumno2: alumno2[]
 }

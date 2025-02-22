@@ -1,4 +1,4 @@
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm"
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn, JoinColumn } from "typeorm"
 import { examen } from "../../examen_teórico/entities/examen.entity"
 
 @Entity()
@@ -24,9 +24,11 @@ export class alumno2 {
   @Column()
   nota: number
   
-  @ManyToOne(
-    () => examen,
-    (examen) => examen.alumno2,
-  )
-  examen: examen[]
+  @ManyToOne(() => alumno2)
+  @JoinColumn({ name: 'id_alumno' })
+  alumno: alumno2;
+
+  @ManyToOne(() => examen)
+  @JoinColumn({ name: 'id_examen_teórico' })
+  examen: examen;
 }

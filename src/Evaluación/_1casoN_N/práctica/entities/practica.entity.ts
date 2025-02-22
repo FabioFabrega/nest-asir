@@ -18,9 +18,4 @@ export class practica {
   @Column()
   nota: number
 
-  @OneToMany(
-    () => alumno,
-    (alumno) => alumno.practica,
-  )
-  alumno: alumno[]
 }
