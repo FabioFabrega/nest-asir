@@ -1,19 +1,19 @@
 import { Module} from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { UsuarioModule } from './usuario/usuario.module';
-import { BibliotecaModule } from './biblioteca/biblioteca.module';
 import { PokemonModule } from './pokemon/pokemon.module';
 import { PeliculasModule } from './peliculas/peliculas.module';
-import { Producto } from './_1casoN_N/producto/entities/producto.entity';
-import { ProductoModule } from './_1casoN_N/producto/producto.module';
-import { ProfileModule } from './_caso1_1/profile/profile.module';
-import { UserModule } from './_caso1_1/user/user.module';
-import { UsersModule } from './_caso1_N/users/users.module';
-import { TallaModule } from './_1casoN_N/talla/talla.module';
-import { ProductotallaModule } from './_1casoN_N/productotalla/productotalla.module';
-import { Producto2Module } from './_2casoN_N/producto2/producto2.module';
-import { Talla2Module } from './_2casoN_N/talla2/talla2.module';
+import { profesor } from './Evaluación/_2casoN_N/profesor_diseña_práctica/entities/profesor.entity';
+import { profesor2 } from './Evaluación/_caso1_N/profesor/entities/profesor2.entity';
+import { profesor2Module } from './Evaluación/_caso1_N/profesor/profesor2.module';
+import { profesorModule } from './Evaluación/_2casoN_N/profesor_diseña_práctica/profesor.module';
+import { practica2Module } from './Evaluación/_2casoN_N/práctica2/practica2.module';
+import { practicaModule } from './Evaluación/_1casoN_N/práctica/practica.module';
+import { alumnoModule } from './Evaluación/_1casoN_N/alumno_realiza_práctica/alumno.module';
+import { alumno2Module } from './Evaluación/_3casoN_N/alumno_hace_examen_teórico/alumno2.module';
+import { examen2Module } from './Evaluación/_caso1_N/examen_teórico2/examen2.module';
+import { examenModule } from './Evaluación/_3casoN_N/examen_teórico/examen.module';
+
 
 @Module({
   imports: [ConfigModule.forRoot({isGlobal:true,}), 
@@ -39,18 +39,17 @@ import { Talla2Module } from './_2casoN_N/talla2/talla2.module';
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize:true
     }),
-    UsuarioModule,
-    BibliotecaModule,
     PokemonModule,
     PeliculasModule,
-    UsersModule,
-    UserModule,
-    ProfileModule,
-    ProductoModule,
-    TallaModule,
-    ProductotallaModule,
-    Producto2Module,
-    Talla2Module
+    profesor2Module,
+    profesorModule,
+    practica2Module,
+    practicaModule,
+    alumnoModule,
+    alumno2Module,
+    examen2Module,
+    examenModule
+
 
   ],
   controllers: [],
