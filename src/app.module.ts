@@ -13,6 +13,11 @@ import { alumnoModule } from './Evaluación/_1casoN_N/alumno_realiza_práctica/a
 import { alumno2Module } from './Evaluación/_3casoN_N/alumno_hace_examen_teórico/alumno2.module';
 import { examen2Module } from './Evaluación/_caso1_N/examen_teórico2/examen2.module';
 import { examenModule } from './Evaluación/_3casoN_N/examen_teórico/examen.module';
+import { AuthModule } from './_biblioteca/auth/auth.module';
+import { AutorModule } from './_biblioteca/autor/autor.module';
+import { Libro } from './_biblioteca/libro/entities/libro.entity';
+import { LibroModule } from './_biblioteca/libro/libro.module';
+import { UsuarioModule } from './_biblioteca/users/users.module';
 
 
 @Module({
@@ -41,14 +46,10 @@ import { examenModule } from './Evaluación/_3casoN_N/examen_teórico/examen.mod
     }),
     PokemonModule,
     PeliculasModule,
-    profesor2Module,
-    profesorModule,
-    practica2Module,
-    practicaModule,
-    alumnoModule,
-    alumno2Module,
-    examen2Module,
-    examenModule
+    AuthModule,
+    AutorModule,
+    LibroModule,
+    UsuarioModule
 
 
   ],
