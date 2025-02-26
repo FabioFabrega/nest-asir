@@ -1,5 +1,5 @@
-import { alumno2 } from "../../alumno_hace_examen_teórico/entities/alumno2.entity"
-import { Column, Entity, ManyToMany, PrimaryGeneratedColumn } from "typeorm"
+import { profesor2 } from "../../profesor/entities/profesor2.entity"
+import { Column, Entity, ManyToOne, JoinColumn, PrimaryGeneratedColumn } from "typeorm"
 
 @Entity()
 export class examen {
@@ -15,6 +15,7 @@ export class examen {
   @Column()
   fecha: string
 
-  @Column()
-  nota: number
+  @ManyToOne(() => profesor2)
+    @JoinColumn({ name: 'id_profesor' })
+    profesor: profesor2;
 }
