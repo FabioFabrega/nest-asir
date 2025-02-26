@@ -11,8 +11,8 @@ export class practicaService {
     @InjectRepository(practica,'base2')
     private readonly practicaRepository: Repository<practica>,
   ) {}
-  async crearpractica(id: number, título: string, dificultad: string, fecha: string, nota: number): Promise<practica> {
-    const practica = this.practicaRepository.create({ id, título, dificultad, fecha, nota });
+  async crearpractica(id: number, título: string, dificultad: string): Promise<practica> {
+    const practica = this.practicaRepository.create({ id, título, dificultad});
     return await this.practicaRepository.save(practica);
   }
   async obtenerTodos(): Promise<practica[]> {

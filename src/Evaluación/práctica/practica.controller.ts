@@ -8,8 +8,8 @@ export class practicaController {
   constructor(private readonly practicaService: practicaService) {}
 
   @Post()
-  async crearpractica(@Body() body: { id: number; título: string; dificualtad: string, fecha: string, nota: number  }) {
-    return await this.practicaService.crearpractica(body.id, body.título, body.dificualtad, body.fecha, body.nota);
+  async crearpractica(@Body() body: { id: number; título: string; dificualtad: string  }) {
+    return await this.practicaService.crearpractica(body.id, body.título, body.dificualtad);
   }
 
   @Get()
