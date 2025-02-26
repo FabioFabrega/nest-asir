@@ -1,6 +1,6 @@
 import { IsNotEmpty } from "class-validator"
 
-export class alumno2Dto {
+export class alumnoDto {
     @IsNotEmpty()
     id: number
   
@@ -18,7 +18,4 @@ export class alumno2Dto {
   
     @IsNotEmpty()
     apellido2: string
-    
-    @IsNotEmpty()
-    nota: number
-  }
+}

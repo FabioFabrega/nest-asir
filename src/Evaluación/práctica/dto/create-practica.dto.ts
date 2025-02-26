@@ -11,11 +11,5 @@ export class CreatepracticaDto {
     
     @IsNotEmpty()
     dificultad: string
-
-    @IsNotEmpty()
-    fecha: string
-
-    @IsNotEmpty()
-    nota: number
     
   }

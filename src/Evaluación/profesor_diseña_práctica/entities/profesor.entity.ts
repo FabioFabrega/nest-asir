@@ -1,5 +1,6 @@
 import { Column, Entity, ManyToOne, JoinColumn, PrimaryGeneratedColumn } from "typeorm"
-import { practica2 } from "../../práctica2/entities/practica2.entity"
+import { practica } from "../../práctica/entities/practica.entity"
+import { profesor2 } from "src/Evaluación/profesor/entities/profesor2.entity"
 
 @Entity()
 export class profesor {
@@ -21,11 +22,11 @@ export class profesor {
   @Column()
   fecha: string
   
-  @ManyToOne(() => profesor)
+  @ManyToOne(() => profesor2)
   @JoinColumn({ name: 'id_profesor' })
-  profesor: profesor;
+  profesor: profesor2;
 
-  @ManyToOne(() => practica2)
+  @ManyToOne(() => practica)
   @JoinColumn({ name: 'id_practica' })
-  practica: practica2;
+  practica: practica;
 }

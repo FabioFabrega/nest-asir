@@ -12,10 +12,4 @@ export class practica {
   @Column()
   dificultad: string
 
-  @Column()
-  fecha: Date
-
-  @Column()
-  nota: number
-
 }
