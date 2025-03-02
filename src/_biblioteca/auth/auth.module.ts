@@ -12,12 +12,12 @@ import { UsuarioModule } from "../users/users.module";
       UsuarioModule,
       PassportModule,
       JwtModule.register({
-        secret: 'tu_secreto_jwt', // Mejor con variable de entorno
+        secret: 'tu_secreto_jwt',
         signOptions: { expiresIn: '1h' },
       }),
     ],
     providers: [AuthService, LocalStrategy, JwtStrategy],
     controllers: [AuthController],
-    exports: [AuthService] //Hay que añadir el export en todos
+    exports: [AuthService] 
   })
   export class AuthModule {}
