@@ -8,7 +8,6 @@ import { JwtAuthGuard } from '../auth/jwt/jwt.guard';
 export class LibroController {
   constructor(private readonly autorService: LibroService) {}
   @Post()
-  @UseGuards(JwtAuthGuard)
   create(@Body() createAutorDto: CreateLibroDto) {    return this.autorService.create(createAutorDto);  }
   @Get()
   findAll() {   return this.autorService.findAll();   }
